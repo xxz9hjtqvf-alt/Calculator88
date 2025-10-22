@@ -8,7 +8,7 @@ const MAX_LENGTH = 12;
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
-    const value = button.textContent;
+    const value = button.textContent.trim();
 
     // AC — очистка всего
     if (button.classList.contains('ac')) {
@@ -29,7 +29,6 @@ buttons.forEach(button => {
     if (button.classList.contains('equal')) {
       try {
         if (currentInput === '' || /[\+\-\*\/.]$/.test(currentInput)) return;
-
         const result = eval(currentInput);
         if (!isFinite(result)) throw new Error();
 
@@ -53,7 +52,7 @@ buttons.forEach(button => {
       resultDisplayed = false;
     }
 
-    // Запрет на ввод 00... в начале
+    // Запрет на лишние нули
     if (value === '0' && currentInput === '0') return;
     if (/^0[0-9]/.test(currentInput + value)) return;
 
@@ -63,7 +62,7 @@ buttons.forEach(button => {
     // Если только "." — добавляем "0."
     if (value === '.' && currentInput === '') currentInput = '0';
 
-    // Добавление символа
+    // Добавляем символ
     currentInput += value;
     display.textContent = currentInput;
   });
@@ -71,9 +70,9 @@ buttons.forEach(button => {
 
 // Ввод с клавиатуры
 document.addEventListener('keydown', e => {
-  const allowedKeys = /[0-9\+\-\*\/\.]/;
-  if (allowedKeys.test(e.key)) {
-    document.querySelector(`button:contains('${e.key}')`);
+  const allowed = /[0-9\+\-\*\/\.]/;
+
+  if (allowed.test(e.key)) {
     if (currentInput.length < MAX_LENGTH) {
       if (resultDisplayed && /[0-9]/.test(e.key)) {
         currentInput = '';
