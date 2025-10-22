@@ -1,80 +1,90 @@
-.calc{
-    margin: 50px auto;
-    width: 300px;
-    height: 500px;
-    border: 1px solid #000;
-    border-radius: 20px;
-    background: #000;
-    color: #fff;
-    font-family: Arial;
-    padding: 18px;
-    box-shadow: 4px 4px 4px #4f4f4f;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
 }
 
-.calc-screen{
-    height: 125px;
-    padding: 10px;
-    display: grid;
-    justify-items: end;
-    align-items: end;
-    margin-bottom: 25px;
-}
-.calc-history{
-    width: 100%;
-    height: 60px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-
+.calculator {
+  background-color: #1e1e1e;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  width: 320px;
+  overflow: hidden;
 }
 
-.calc-screen p{
-    text-align: right;
-    font-size: 4rem;
-    margin: 0;
-    padding: 0 15px;
-    width: 250px;
-    overflow: hidden;
+.display {
+  background: #111;
+  padding: 20px;
+  text-align: right;
+  color: white;
+  border-bottom: 2px solid #2a2a2a;
 }
 
-.buttons{
-    display: grid;
-    grid-template-areas: 
-    "ac plus-minus percent division"
-    "seven eight nine multi"
-    "four five six minus"
-    "one two three plus"
-    "zero zero dot equal";
-    grid-gap: 7px;
-    justify-items: center;
+.history {
+  font-size: 14px;
+  color: #888;
+  min-height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.btn.zero{
-    grid-area: zero;
-    width: 100%;
-    border-radius: 34px;
+.result {
+  font-size: 36px;
+  margin-top: 10px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.btn{
-    width: 60px;
-    height: 60px;
-    background: #333;
-    border-radius: 50px;
-    text-align: center;
-    line-height: 60px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    user-select: none;
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
-.btn:hover{
-    filter: brightness(120%);
+
+button {
+  font-size: 20px;
+  padding: 20px;
+  border: none;
+  outline: none;
+  background-color: #2b2b2b;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
 }
-.btn:active{
-    filter: brightness(90%);
+
+button:hover {
+  background-color: #3a3a3a;
 }
-.btn.bg-grey{
-    background: #a6a6a6;
+
+button:active {
+  background-color: #4e4e4e;
 }
-.btn.bg-orange{
-    background: #ff9501;
+
+button.ac {
+  background-color: #d62d20;
+}
+
+button.ac:hover {
+  background-color: #ff3b30;
+}
+
+button.equal {
+  background-color: #007aff;
+}
+
+button.equal:hover {
+  background-color: #3298ff;
+}
+
+button.del {
+  background-color: #ff9500;
+}
+
+button.del:hover {
+  background-color: #ffb84d;
 }
